@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The event system. Keeps track of every region and the events happening across them.
+/// </summary>
 public class EventSystem : MonoBehaviour
 {
     public List<Region> regions;
@@ -18,6 +21,10 @@ public class EventSystem : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Tells the event system that a given region has stopped sinning. Sin tier <= 0
+    /// </summary>
+    /// <param name="region">The region.</param>
     public void RegionStoppedSinning(Region region)
     {
         m_regionsSinning--;
@@ -25,6 +32,10 @@ public class EventSystem : MonoBehaviour
         Debug.Log("Regions Sinning: " + m_regionsSinning);
     }
     
+    /// <summary>
+    /// Tells the event system that a given region has begun to sin. Sin tier > 0
+    /// </summary>
+    /// <param name="region">The region.</param>
     public void RegionStartedSinning(Region region)
     {
         m_regionsSinning++;
