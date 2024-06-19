@@ -29,6 +29,9 @@ public class EventSystem : MonoBehaviour
     {
         m_regionsSinning--;
 
+        if (m_regionsSinning < 0) // Clamp.
+            m_regionsSinning = 0;
+
         Debug.Log("Regions Sinning: " + m_regionsSinning);
     }
     

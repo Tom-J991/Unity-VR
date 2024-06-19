@@ -45,6 +45,7 @@ public class Region : MonoBehaviour
         if (m_timer >= m_delay) // Tick tock.
         {
             //Sin();
+            Strike();
 
             // Reset.
             m_delay = Random.Range(1, m_sinChance);
