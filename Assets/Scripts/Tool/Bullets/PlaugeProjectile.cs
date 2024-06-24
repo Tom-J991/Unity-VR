@@ -23,7 +23,6 @@ public class PlaugeProjectile : Bullet
         {
             if (cas.collider.gameObject.GetComponent<PopUp>())
             {
-                m_manager.AddPlaguePos(this.gameObject.transform);
                 cas.collider.gameObject.GetComponent<PopUp>().Plagued = true;
             }
 

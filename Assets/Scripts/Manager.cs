@@ -5,7 +5,6 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     [SerializeField] private List<Transform> m_contients = new();
-    private List<Transform> m_plaguePos = new();
     private List<PopUp> m_popUps = new();
 
     public PopUp Pop 
@@ -19,8 +18,7 @@ public class Manager : MonoBehaviour
     private int m_contientsIndex;
     [SerializeField] private float m_maxDelayOfSpawn;
     private float m_spawnDelay;
-    [SerializeField] private float m_maxPlagueDelay;
-    private float m_plagueDelay;
+
     private Scoring m_score;
     private SpawnEvent m_spawnEvent;
 
@@ -35,31 +33,6 @@ public class Manager : MonoBehaviour
     private void Update()
     {
         SpawnEvent();
-        PlagueKill();
-    }
-
-    void PlagueKill()
-    {
-        if (m_plagueDelay > Time.time) return;
-
-        m_plagueDelay = Time.time + m_maxPlagueDelay;
-
-        if (m_popUps.Count > 0)
-        {
-            foreach (PopUp pop in m_popUps)
-            {
-                if (pop.Plagued)
-                {
-                    if (pop.Level == 1)
-                    {
-                        Destroy(pop.gameObject);
-                    }
-                    else
-                        pop.Level -= 1;
-                }
-            }
-            m_popUps.Clear();
-        }
     }
 
     void SpawnEvent()
@@ -74,10 +47,5 @@ public class Manager : MonoBehaviour
     }
 
     public Scoring ReturnScore() { return m_score; }
-
-    public void AddPlaguePos(Transform pos)
-    {
-        m_plaguePos.Add(pos);
-    }
 
 }
