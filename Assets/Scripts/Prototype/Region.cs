@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Region : MonoBehaviour
 {
+    public List<Region> neighbors;
+
     public Transform position = null; // Temp.
     public Collider trigger = null;
 

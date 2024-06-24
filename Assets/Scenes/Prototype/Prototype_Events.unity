@@ -245,6 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994f730b879490a44bbc89f90507e5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighbors:
+  - {fileID: 1901004126}
+  - {fileID: 1054993366}
   position: {fileID: 1554323929}
   trigger: {fileID: 743695313}
   sinTier: 0
@@ -628,6 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994f730b879490a44bbc89f90507e5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighbors:
+  - {fileID: 1901004126}
+  - {fileID: 567027905}
   position: {fileID: 1797441246}
   trigger: {fileID: 977885670}
   sinTier: 0
@@ -1234,6 +1240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994f730b879490a44bbc89f90507e5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neighbors:
+  - {fileID: 567027905}
+  - {fileID: 1054993366}
   position: {fileID: 369969529}
   trigger: {fileID: 1175029366}
   sinTier: 0
