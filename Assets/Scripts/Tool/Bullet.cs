@@ -3,22 +3,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    protected Type m_typeCurrent;
     protected int m_level;
     protected GameObject m_gunThisCameFrom;
-    protected Manager m_manager;
+    protected EventSystem m_eventSystem;
 
-    virtual public void Insialize(Type type, int level, GameObject gun, Manager manager)
+    virtual public void Initialize(int level, GameObject gun)
     {
-        m_typeCurrent = type;
         m_level = level;
         m_gunThisCameFrom = gun;
-        m_manager = manager;
+        m_eventSystem = GameManager.Instance().eventSystem;
     }
 
     virtual protected void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.GetComponent<PopUp>())
+        Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
+        if (region == null)
         {
             Destroy(this.gameObject);
             return;

@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProjectile : Bullet
+public class TridentProjectile : Bullet
 {
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     public override void Initialize(int level, GameObject gun)
     {
@@ -15,15 +20,13 @@ public class BasicProjectile : Bullet
         base.OnCollisionEnter(collision);
 
         Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
-        if (region != null)
+        if (region != null && region.sinTier == m_level)
         {
-            Debug.Log("Collision {Sin Tier: " + region.sinTier + " }.{Level: " + m_level + "}");
-            if (region.sinTier == m_level)
+            foreach (Region neighbor in region.neighbors)
             {
-                Debug.Log("Striked Region {Sin Tier: " + region.sinTier + " }.{Level: " + m_level + "}");
-                region.Strike();
-                //Destroy(collision.gameObject);
+                neighbor.SetSinTier(0);
             }
+            region.SetSinTier(0);
         }
 
         Destroy(this.gameObject);

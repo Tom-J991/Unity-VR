@@ -6,13 +6,6 @@ public class Tool : MonoBehaviour
 {
     [Range(0, 2000), SerializeField] protected float m_speed;
     [Range(1, 3), SerializeField] protected int m_level;
-    public Type currentType;
-
-    [Space]
-
-    protected Manager m_manager;
-
-    [Space]
 
     [SerializeField] protected GameObject m_bulletPrefab;
     [SerializeField] protected Transform m_bulletPos;
@@ -22,7 +15,6 @@ public class Tool : MonoBehaviour
 
     virtual protected void Start()
     {
-        m_manager = FindObjectOfType<Manager>();
     }
 
     virtual public void Shot()

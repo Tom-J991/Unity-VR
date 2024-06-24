@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plague : Tool
+public class Trident : Tool
 {
     // Start is called before the first frame update
     protected override void Start()
@@ -16,9 +16,9 @@ public class Plague : Tool
         base.Shot();
 
         GameObject bullet = Instantiate(m_bulletPrefab, m_bulletPos.position, m_bulletPos.rotation);
-        bullet.AddComponent<PlaugeProjectile>();
+        bullet.AddComponent<TridentProjectile>();
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        Bullet bulletScript = bullet.GetComponent<PlaugeProjectile>();
+        Bullet bulletScript = bullet.GetComponent<TridentProjectile>();
 
         Vector3 direction = m_bulletPos.transform.TransformDirection(Vector3.forward);
         bulletRb.AddForce(direction * m_speed);

@@ -22,7 +22,7 @@ public class Smite : Tool
 
         Vector3 direction = m_bulletPos.transform.TransformDirection(Vector3.forward);
         bulletRb.AddForce(direction * m_speed);
-        bulletScript.Insialize(currentType, m_level, this.gameObject, m_manager);
+        bulletScript.Initialize(m_level, this.gameObject);
 
         Destroy(bullet, 5f);
     }

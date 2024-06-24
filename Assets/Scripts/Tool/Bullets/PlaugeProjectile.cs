@@ -10,23 +10,21 @@ public class PlaugeProjectile : Bullet
         
     }
 
-    public override void Insialize(Type type, int level, GameObject gun, Manager manager)
+    public override void Initialize(int level, GameObject gun)
     {
-        base.Insialize(type, level, gun, manager);
+        base.Initialize(level, gun);
     }
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        RaycastHit[] hit = Physics.SphereCastAll(this.gameObject.transform.position, 2, transform.forward);
+        base.OnCollisionEnter(collision);
 
-        foreach (RaycastHit cas in hit)
+        Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
+        if (region != null && region.sinTier == m_level)
         {
-            if (cas.collider.gameObject.GetComponent<PopUp>())
-            {
-                cas.collider.gameObject.GetComponent<PopUp>().Plagued = true;
-            }
-
+            region.plagued = true;
         }
+
         Destroy(this.gameObject);
     }
 }

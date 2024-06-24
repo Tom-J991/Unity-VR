@@ -20,7 +20,7 @@ public class RevolutionTrigger : MonoBehaviour
     /// </summary>
     /// <param name="obj">The first object to check.</param>
     /// <param name="depth">The depth of recursion, should be set to 0.</param>
-    private Region GetRegionFromParent(Transform obj, int depth = 0)
+    public static Region GetRegionFromParent(Transform obj, int depth = 0) // TODO: Move to a utility class.
     {
         if (depth > 3) // Stop if recursion is too deep. Avoids infinite loop.
             return null;
@@ -55,6 +55,13 @@ public class RevolutionTrigger : MonoBehaviour
             case TriggerType.FullRevolution:
             {
                 Debug.Log("Revolution!");
+
+                if (region.plagued) // Don't increase sin for a plagued region.
+                {
+                    region.plagued = false; // Reset plague flag.
+                    break;
+                }
+
                 region.Sin(); // Region should increase sin tier on a full revolution.
             } break;
         }
