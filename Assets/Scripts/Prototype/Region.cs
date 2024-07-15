@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// A region. Does everything necessary for a specific region.
@@ -14,11 +15,14 @@ public class Region : MonoBehaviour
     public Collider trigger = null;
 
     public int sinTier = 0; // Should be 0 if beliefTier is greater than 0.
-    public int beliefTier = 0; // Should be 0 if sinTier is greater than 0.
+    public int miracleTier = 0; // Should be 0 if sinTier is greater than 0.
 
     public bool plagued = false;
 
     private EventSystem m_eventSystem = null;
+
+    public Transform linePointPos;
+    public GameObject line;
 
     // Temp testing stuff
     [SerializeField] private MeshRenderer m_rendererTemp;
@@ -30,12 +34,12 @@ public class Region : MonoBehaviour
         m_eventSystem.regions.Add(this); // Make sure the event system is aware of us.
 
         sinTier = 0;
-        beliefTier = 0;
+        miracleTier = 0;
     }
 
     private void Update()
     {
-        if (sinTier >= 3 || beliefTier >= 3) // If it's already sinning or believing too much, don't continue.
+        if (sinTier >= 3 || miracleTier >= 3) // If it's already sinning or believing too much, don't continue.
         {
             return;
         }
@@ -56,10 +60,24 @@ public class Region : MonoBehaviour
         {
             m_eventSystem.RegionStoppedSinning(this); // Tell the event system we've stopped sinning.
             sinTier = 0; // Clamp.
+            for (int i = 0; i < linePointPos.childCount; i++)
+                Destroy(linePointPos.GetChild(i).gameObject);
         }
 
-        int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;
+        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
         m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
+    }
+
+    private void SpawnLine()
+    {
+        for(int i = 0; i < linePointPos.childCount; i++)
+            Destroy(linePointPos.GetChild(i).gameObject);
+
+        GameObject a = Instantiate(line, linePointPos);
+
+        Line lineScript = a.GetComponent<Line>();
+
+        lineScript.ChangeIcon(sinTier, miracleTier, linePointPos.position);
     }
 
     /// <summary>
@@ -73,9 +91,9 @@ public class Region : MonoBehaviour
         {
             m_eventSystem.RegionStartedSinning(this); // Tell the event system we've started sinning.
         }
-        if (beliefTier > 0)
+        if (miracleTier > 0)
         {
-            beliefTier = 0;
+            miracleTier = 0;
             m_eventSystem.RegionStoppedBelieving(this); // Tell the event system we've stopped believing.
         }
 
@@ -87,7 +105,9 @@ public class Region : MonoBehaviour
             sinTier = 3;
         }
 
-        int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;
+        SpawnLine();
+
+        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
         m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
@@ -98,7 +118,7 @@ public class Region : MonoBehaviour
     {
         Debug.Log("Miracle!");
 
-        if (beliefTier <= 0)
+        if (miracleTier <= 0)
         {
             m_eventSystem.RegionStartedBelieving(this); // Tell the event system we've started believing.
         }
@@ -108,15 +128,17 @@ public class Region : MonoBehaviour
             m_eventSystem.RegionStoppedSinning(this); // Tell the event system we've stopped sinning.
         }
 
-        beliefTier++;
+        miracleTier++;
 
         // Clamp.
-        if (beliefTier >= 3)
+        if (miracleTier >= 3)
         {
-            beliefTier = 3;
+            miracleTier = 3;
         }
 
-        int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;
+        SpawnLine();
+
+        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
         m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
@@ -135,16 +157,16 @@ public class Region : MonoBehaviour
         {
             m_eventSystem.RegionStoppedSinning(this); // Tell the event system we've stopped sinning.
         }
-        if (this.beliefTier > 0 && tier > 0)
+        if (this.miracleTier > 0 && tier > 0)
         {
-            this.beliefTier = 0; // Shouldn't be believing.
+            this.miracleTier = 0; // Shouldn't be believing.
             m_eventSystem.RegionStoppedBelieving(this); // Tell the event system we've stopped believing.
         }
 
         this.sinTier = tier;
         Debug.Log("Set regions sin tier to " + tier);
 
-        int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;
+        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
         m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
@@ -155,11 +177,11 @@ public class Region : MonoBehaviour
     {
         int tier = math.clamp(beliefTier, 0, 3); // Should be within range.
 
-        if (this.beliefTier <= 0 && tier > 0)
+        if (this.miracleTier <= 0 && tier > 0)
         {
             m_eventSystem.RegionStartedBelieving(this); // Tell the event system we've started believing.
         }
-        if (this.beliefTier > 0 && tier <= 0)
+        if (this.miracleTier > 0 && tier <= 0)
         {
             m_eventSystem.RegionStoppedBelieving(this); // Tell the event system we've stopped believing.
         }
@@ -169,7 +191,7 @@ public class Region : MonoBehaviour
             m_eventSystem.RegionStoppedSinning(this); // Tell the event system we've stopped sinning.
         }
 
-        this.beliefTier = tier;
+        this.miracleTier = tier;
         Debug.Log("Set regions belief tier to " + tier);
 
         int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;

@@ -31,6 +31,5 @@ public class Tool : MonoBehaviour
 
     protected void Update()
     {
-        m_infoPos.up = Vector3.zero;
     }
 }
