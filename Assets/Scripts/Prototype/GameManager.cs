@@ -13,6 +13,11 @@ public class GameManager
 
     public EventSystem eventSystem = null; // Keep global reference to the current active event system, null if not active.
 
+    public void OnStart()
+    {
+        Random.InitState((int)Time.timeSinceLevelLoad);
+    }
+
     public void SetEventSystem(EventSystem eventSystem)
     {
         this.eventSystem = eventSystem;

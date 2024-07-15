@@ -10,10 +10,12 @@ public class EventSystem : MonoBehaviour
     public List<Region> regions;
 
     private int m_regionsSinning = 0;
+    private int m_regionsBelieving = 0;
 
     private void Awake()
     {
         GameManager.Instance().SetEventSystem(this);
+        GameManager.Instance().OnStart();
     }
 
     private void Update()
@@ -44,5 +46,30 @@ public class EventSystem : MonoBehaviour
         m_regionsSinning++;
 
         Debug.Log("Regions Sinning: " + m_regionsSinning);
+    }
+
+    /// <summary>
+    /// Tells the event system that a given region has stopped believing. Believe tier <= 0
+    /// </summary>
+    /// <param name="region">The region.</param>
+    public void RegionStoppedBelieving(Region region)
+    {
+        m_regionsBelieving--;
+
+        if (m_regionsBelieving < 0) // Clamp.
+            m_regionsBelieving = 0;
+
+        Debug.Log("Regions Believing: " + m_regionsBelieving);
+    }
+
+    /// <summary>
+    /// Tells the event system that a given region has begun to believe. Believe tier > 0
+    /// </summary>
+    /// <param name="region">The region.</param>
+    public void RegionStartedBelieving(Region region)
+    {
+        m_regionsBelieving++;
+
+        Debug.Log("Regions Believing: " + m_regionsBelieving);
     }
 }

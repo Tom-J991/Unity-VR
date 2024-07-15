@@ -15,6 +15,9 @@ public class RevolutionTrigger : MonoBehaviour
     }
     public TriggerType type = TriggerType.QuarterWay;
 
+    [Range(0, 100), Tooltip("Only really matters for the full revolution.")] 
+    public int randomChance = 50;
+
     /// <summary>
     /// Private recursive function to get the region component from a hierarchy of objects.
     /// </summary>
@@ -62,7 +65,31 @@ public class RevolutionTrigger : MonoBehaviour
                     break;
                 }
 
-                region.Sin(); // Region should increase sin tier on a full revolution.
+                bool shouldSin = region.sinTier > 0; // Is sinning.
+                bool shouldMiracle = region.beliefTier > 0; // Is believing.
+
+                // If region isn't already believing or sinning, have a random chance for it to do start doing either.
+                if (region.beliefTier <= 0 && region.sinTier <= 0)
+                {
+                    int chance = Random.Range(0, 100);
+                    if (chance <= randomChance)
+                    {
+                        shouldSin = true;
+                    }
+                    else
+                    {
+                        shouldMiracle = true;
+                    }
+                }
+
+                if (shouldSin)
+                {
+                    region.Sin(); // Region should increase sin tier on a full revolution.
+                }
+                else if (shouldMiracle)
+                {
+                    region.Miracle(); // Region should increase belief tier on a full revolution.
+                }
             } break;
         }
     }
