@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProjectile : Bullet
+public class Miracle1Projectile : Bullet
 {
 
     public override void Initialize(int level, GameObject gun)
@@ -21,8 +21,7 @@ public class BasicProjectile : Bullet
             if (region.sinTier == m_level)
             {
                 Debug.Log("Striked Region {Sin Tier: " + region.sinTier + " }.{Level: " + m_level + "}");
-                region.StrikeSin();
-                //Destroy(collision.gameObject);
+                region.StrikeMiracle();
             }
         }
 

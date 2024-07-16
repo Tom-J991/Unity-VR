@@ -17,6 +17,7 @@ public class RevolutionTrigger : MonoBehaviour
 
     [Range(0, 100), Tooltip("Only really matters for the full revolution.")] 
     public int randomChanceSin = 30;
+    [Range(0, 100), Tooltip("Only really matters for the full revolution.")]
     public int randomChanceMiracle = 50;
 
     /// <summary>
@@ -62,9 +63,25 @@ public class RevolutionTrigger : MonoBehaviour
 
                 if (region.plagued) // Don't increase sin for a plagued region.
                 {
+                    region.sinTier -= 1;
+                    foreach(Region neighbour in region.neighbors)
+                    {
+                        neighbour.sinTier -= 1;
+                    }
                     region.plagued = false; // Reset plague flag.
                     break;
                 }
+
+                    if (region.blessed) // Don't increase sin for a plagued region.
+                    {
+                        region.miracleTier -= 1;
+                        foreach (Region neighbour in region.neighbors)
+                        {
+                            neighbour.miracleTier -= 1;
+                        }
+                        region.blessed = false; // Reset plague flag.
+                        break;
+                    }
 
                 bool shouldSin = region.sinTier > 0; // Is sinning.
                 bool shouldMiracle = region.miracleTier > 0; // Is believing.

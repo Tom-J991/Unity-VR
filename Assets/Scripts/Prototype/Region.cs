@@ -11,22 +11,18 @@ public class Region : MonoBehaviour
 {
     public List<Region> neighbors;
 
-    public Transform position = null; // Temp.
     public Collider trigger = null;
 
     public int sinTier = 0; // Should be 0 if beliefTier is greater than 0.
     public int miracleTier = 0; // Should be 0 if sinTier is greater than 0.
 
     public bool plagued = false;
+    public bool blessed = false;
 
     private EventSystem m_eventSystem = null;
 
     public Transform linePointPos;
     public GameObject line;
-
-    // Temp testing stuff
-    [SerializeField] private MeshRenderer m_rendererTemp;
-    [SerializeField] private Material[] m_testMaterials;
 
     private void Start()
     {
@@ -50,7 +46,7 @@ public class Region : MonoBehaviour
     /// <summary>
     /// Strike the region, reduces sin tier.
     /// </summary>
-    public void Strike()
+    public void StrikeSin()
     {
         Debug.Log("Strike!");
 
@@ -63,9 +59,24 @@ public class Region : MonoBehaviour
             for (int i = 0; i < linePointPos.childCount; i++)
                 Destroy(linePointPos.GetChild(i).gameObject);
         }
+    }
 
-        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
-        m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
+    /// <summary>
+    /// Strike the region, reduces miracle tier.
+    /// </summary>
+    public void StrikeMiracle()
+    {
+        Debug.Log("Strike!");
+
+        miracleTier--;
+
+        if (miracleTier <= 0)
+        {
+            m_eventSystem.RegionStoppedBelieving(this); // Tell the event system we've stopped sinning.
+            miracleTier = 0; // Clamp.
+            for (int i = 0; i < linePointPos.childCount; i++)
+                Destroy(linePointPos.GetChild(i).gameObject);
+        }
     }
 
     private void SpawnLine()
@@ -106,9 +117,6 @@ public class Region : MonoBehaviour
         }
 
         SpawnLine();
-
-        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
-        m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
     /// <summary>
@@ -137,9 +145,6 @@ public class Region : MonoBehaviour
         }
 
         SpawnLine();
-
-        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
-        m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
     /// <summary>
@@ -156,6 +161,8 @@ public class Region : MonoBehaviour
         if (this.sinTier > 0 && tier <= 0)
         {
             m_eventSystem.RegionStoppedSinning(this); // Tell the event system we've stopped sinning.
+            for (int i = 0; i < linePointPos.childCount; i++)
+                Destroy(linePointPos.GetChild(i).gameObject);
         }
         if (this.miracleTier > 0 && tier > 0)
         {
@@ -166,8 +173,6 @@ public class Region : MonoBehaviour
         this.sinTier = tier;
         Debug.Log("Set regions sin tier to " + tier);
 
-        int materialIdx = (sinTier > 0 || miracleTier > 0) ? (miracleTier > 0) ? 3 + miracleTier : sinTier : 0;
-        m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 
     /// <summary>
@@ -184,6 +189,8 @@ public class Region : MonoBehaviour
         if (this.miracleTier > 0 && tier <= 0)
         {
             m_eventSystem.RegionStoppedBelieving(this); // Tell the event system we've stopped believing.
+            for (int i = 0; i < linePointPos.childCount; i++)
+                Destroy(linePointPos.GetChild(i).gameObject);
         }
         if (this.sinTier > 0 && tier > 0)
         {
@@ -193,8 +200,5 @@ public class Region : MonoBehaviour
 
         this.miracleTier = tier;
         Debug.Log("Set regions belief tier to " + tier);
-
-        int materialIdx = (sinTier > 0 || beliefTier > 0) ? (beliefTier > 0) ? 3 + beliefTier : sinTier : 0;
-        m_rendererTemp.sharedMaterial = m_testMaterials[materialIdx]; // Temp.
     }
 }

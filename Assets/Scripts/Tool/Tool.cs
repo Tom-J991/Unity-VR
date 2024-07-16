@@ -14,6 +14,9 @@ public class Tool : MonoBehaviour
     [SerializeField] protected Transform m_bulletPos;
     [SerializeField] protected float m_shootDelay;
 
+    [SerializeField] protected AudioSource m_impactSound;
+    [SerializeField] protected AudioSource m_travelSound;
+
     protected float m_lastShot;
 
     virtual protected void Start()
@@ -25,8 +28,6 @@ public class Tool : MonoBehaviour
         if (m_lastShot > Time.time) return;
 
         m_lastShot = Time.time + m_shootDelay;
-
-
     }
 
     protected void Update()
