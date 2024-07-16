@@ -254,7 +254,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -578,7 +578,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7819393845190628725}
-  m_LocalRotation: {x: 0.5000003, y: 0.49999985, z: -0.49999973, w: 0.50000024}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0.708, y: 0.847, z: -0.066}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -886,5 +886,5 @@ MonoBehaviour:
     type: 3}
   m_bulletPos: {fileID: 7819393843533056738}
   m_shootDelay: 4
-  m_impactSound: {fileID: 0}
-  m_travelSound: {fileID: 0}
+  m_impactSound: {fileID: 8300000, guid: a672efb4cf61999419677d389c4e2ced, type: 3}
+  m_travelSound: {fileID: 8300000, guid: cc12599e9563d414992eee81169a92e2, type: 3}

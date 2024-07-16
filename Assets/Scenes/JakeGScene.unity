@@ -130,16 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5626874622720947526, guid: c8e64ff10b7287547983c4de498a1253,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 154296a433ced6445ac436a03dad4fde, type: 3}
-    - target: {fileID: 5626874622720947526, guid: c8e64ff10b7287547983c4de498a1253,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0bcde1e41e8c1c744a5c15ff64ec2507, type: 3}
     - target: {fileID: 5626874622720947529, guid: c8e64ff10b7287547983c4de498a1253,
         type: 3}
       propertyPath: m_RootOrder
@@ -200,11 +190,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmiteLevel3
       objectReference: {fileID: 0}
-    - target: {fileID: 5626874623539585382, guid: c8e64ff10b7287547983c4de498a1253,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8e64ff10b7287547983c4de498a1253, type: 3}
 --- !u!1 &147266181
@@ -447,16 +432,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6785047273049174877, guid: 3588e061349b6cb438a9753db827f7a4,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 154296a433ced6445ac436a03dad4fde, type: 3}
-    - target: {fileID: 6785047273049174877, guid: 3588e061349b6cb438a9753db827f7a4,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: cc12599e9563d414992eee81169a92e2, type: 3}
     - target: {fileID: 6785047273049174886, guid: 3588e061349b6cb438a9753db827f7a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -517,11 +492,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiracleLevel2
       objectReference: {fileID: 0}
-    - target: {fileID: 6785047273865613483, guid: 3588e061349b6cb438a9753db827f7a4,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3588e061349b6cb438a9753db827f7a4, type: 3}
 --- !u!1001 &677049944
@@ -531,16 +501,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 744185485657798150, guid: a6c7389fb71b2aa49bd4bf6cd5f06ab5,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 3d2410ba13267f149ac5238d5316e4fd, type: 3}
-    - target: {fileID: 744185485657798150, guid: a6c7389fb71b2aa49bd4bf6cd5f06ab5,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0bcde1e41e8c1c744a5c15ff64ec2507, type: 3}
     - target: {fileID: 744185485657798151, guid: a6c7389fb71b2aa49bd4bf6cd5f06ab5,
         type: 3}
       propertyPath: m_RootOrder
@@ -601,11 +561,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmiteLevel2
       objectReference: {fileID: 0}
-    - target: {fileID: 744185486102466957, guid: a6c7389fb71b2aa49bd4bf6cd5f06ab5,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c7389fb71b2aa49bd4bf6cd5f06ab5, type: 3}
 --- !u!1001 &1162737562
@@ -615,16 +570,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2080848921374320744, guid: 54a5cb935f1cb394c8f261b3fa65cc18,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6da33a8cd03ff624ebbfa1c1c0de1e26, type: 3}
-    - target: {fileID: 2080848921374320744, guid: 54a5cb935f1cb394c8f261b3fa65cc18,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: cc12599e9563d414992eee81169a92e2, type: 3}
     - target: {fileID: 2080848921374320757, guid: 54a5cb935f1cb394c8f261b3fa65cc18,
         type: 3}
       propertyPath: m_RootOrder
@@ -685,11 +630,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiracleLevel3
       objectReference: {fileID: 0}
-    - target: {fileID: 2080848921465752989, guid: 54a5cb935f1cb394c8f261b3fa65cc18,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54a5cb935f1cb394c8f261b3fa65cc18, type: 3}
 --- !u!1001 &1296458902
@@ -699,21 +639,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7819393844075733303, guid: 31e342f6e8886124d90f2cd38e9990a6,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 41ce8ce2906f7854db485fb087749a64, type: 3}
-    - target: {fileID: 7819393845190628707, guid: 31e342f6e8886124d90f2cd38e9990a6,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a672efb4cf61999419677d389c4e2ced, type: 3}
-    - target: {fileID: 7819393845190628707, guid: 31e342f6e8886124d90f2cd38e9990a6,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: cc12599e9563d414992eee81169a92e2, type: 3}
     - target: {fileID: 7819393845190628716, guid: 31e342f6e8886124d90f2cd38e9990a6,
         type: 3}
       propertyPath: m_RootOrder
@@ -783,11 +708,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1396943429551900912, guid: cf8a822b6d666eb4cb00ff18b02baa73,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 508dc75968ea1d341b3e53f122ee4dc8, type: 3}
     - target: {fileID: 1396943429678112753, guid: cf8a822b6d666eb4cb00ff18b02baa73,
         type: 3}
       propertyPath: m_RootOrder
@@ -843,16 +763,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75
       objectReference: {fileID: 0}
-    - target: {fileID: 1396943429678112754, guid: cf8a822b6d666eb4cb00ff18b02baa73,
-        type: 3}
-      propertyPath: m_impactSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 24fafeb49d0e57d45a3aba292f1ac367, type: 3}
-    - target: {fileID: 1396943429678112754, guid: cf8a822b6d666eb4cb00ff18b02baa73,
-        type: 3}
-      propertyPath: m_travelSound
-      value: 
-      objectReference: {fileID: 8300000, guid: f064d0939e246d64dbffdf248cd25994, type: 3}
     - target: {fileID: 1396943429678112763, guid: cf8a822b6d666eb4cb00ff18b02baa73,
         type: 3}
       propertyPath: m_Name
