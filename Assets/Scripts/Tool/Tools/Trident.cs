@@ -10,10 +10,11 @@ public class Trident : Tool
         base.Start();
     }
 
-
     public override void Shot()
     {
         base.Shot();
+
+        shoot.Play();
 
         GameObject bullet = Instantiate(m_bulletPrefab, m_bulletPos.position, m_bulletPos.rotation);
         bullet.AddComponent<TridentProjectile>();
@@ -27,6 +28,8 @@ public class Trident : Tool
         bulletScript.impactSound.clip = m_impactSound;
 
         bulletScript.travelSound.clip = m_travelSound;
+
+        bulletScript.travelSound.Play();
 
         Destroy(bullet, 5f);
     }

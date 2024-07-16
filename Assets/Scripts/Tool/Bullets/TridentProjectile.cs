@@ -19,6 +19,8 @@ public class TridentProjectile : Bullet
     {
         base.OnCollisionEnter(collision);
 
+        impactSound.Play();
+
         Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
         if (region != null && region.sinTier == m_level)
         {
@@ -28,7 +30,11 @@ public class TridentProjectile : Bullet
             }
             region.SetSinTier(0);
         }
+        else
+        {
+            region.ReturnEvent().score -= region.ReturnEvent().missMatchScore;
+        }
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, impactSound.clip.length);
     }
 }

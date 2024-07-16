@@ -19,12 +19,18 @@ public class PlaugeProjectile : Bullet
     {
         base.OnCollisionEnter(collision);
 
+        impactSound.Play();
+
         Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
         if (region != null && region.sinTier == m_level)
         {
             region.plagued = true;
         }
+        else
+        {
+            region.ReturnEvent().score -= region.ReturnEvent().missMatchScore;
+        }
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, impactSound.clip.length);
     }
 }

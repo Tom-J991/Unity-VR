@@ -56,6 +56,11 @@ public class RevolutionTrigger : MonoBehaviour
             case TriggerType.HalfWay:
             {
                 Debug.Log("Half Way!");
+                if(region.sinTier > 0 || region.miracleTier > 0)
+                {
+                    region.ReturnEvent().score -= region.ReturnEvent().leftScore;
+                }
+
             } break;
             case TriggerType.FullRevolution:
             {

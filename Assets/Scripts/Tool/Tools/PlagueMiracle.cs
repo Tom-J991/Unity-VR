@@ -15,6 +15,8 @@ public class PlagueMiracle : Tool
     {
         base.Shot();
 
+        shoot.Play();
+
         GameObject bullet = Instantiate(m_bulletPrefab, m_bulletPos.position, m_bulletPos.rotation);
         bullet.AddComponent<MiraclePlaugeProjectile>();
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
@@ -28,6 +30,8 @@ public class PlagueMiracle : Tool
         bulletScript.impactSound.clip = m_impactSound;
 
         bulletScript.travelSound.clip = m_travelSound;
+
+        bulletScript.travelSound.Play();
 
         Destroy(bullet, 5f);
     }

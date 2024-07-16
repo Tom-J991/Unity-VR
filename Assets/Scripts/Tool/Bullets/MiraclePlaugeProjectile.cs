@@ -19,12 +19,18 @@ public class MiraclePlaugeProjectile : Bullet
     {
         base.OnCollisionEnter(collision);
 
+        impactSound.Play();
+
         Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
-        if (region != null && region.sinTier == m_level)
+        if (region != null && region.miracleTier == m_level)
         {
             region.blessed = true;
         }
+        else
+        {
+            region.ReturnEvent().score -= region.ReturnEvent().missMatchScore;
+        }
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, impactSound.clip.length);
     }
 }

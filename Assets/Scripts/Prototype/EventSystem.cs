@@ -12,6 +12,17 @@ public class EventSystem : MonoBehaviour
     private int m_regionsSinning = 0;
     private int m_regionsBelieving = 0;
 
+    public int score;
+
+    public int[] sinScores = new int[3];
+    public int[] miracleScores = new int[3];
+
+    public int missMatchScore;
+    public int leftScore;
+
+    public int GetSinners() { return m_regionsSinning; }
+    public int GetBelievers() { return m_regionsBelieving; }
+
     private void Awake()
     {
         GameManager.Instance().SetEventSystem(this);

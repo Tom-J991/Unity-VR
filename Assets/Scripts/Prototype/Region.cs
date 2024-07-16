@@ -21,6 +21,8 @@ public class Region : MonoBehaviour
 
     private EventSystem m_eventSystem = null;
 
+    public EventSystem ReturnEvent() { return m_eventSystem; }
+
     public Transform linePointPos;
     public GameObject line;
 
@@ -50,6 +52,8 @@ public class Region : MonoBehaviour
     {
         Debug.Log("Strike!");
 
+        m_eventSystem.score += m_eventSystem.sinScores[sinTier - 1];
+
         sinTier--;
 
         if (sinTier <= 0)
@@ -67,6 +71,8 @@ public class Region : MonoBehaviour
     public void StrikeMiracle()
     {
         Debug.Log("Strike!");
+
+        m_eventSystem.score += m_eventSystem.miracleScores[miracleTier - 1];
 
         miracleTier--;
 

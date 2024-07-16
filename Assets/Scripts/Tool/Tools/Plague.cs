@@ -15,12 +15,12 @@ public class Plague : Tool
     {
         base.Shot();
 
+        shoot.Play();
+
         GameObject bullet = Instantiate(m_bulletPrefab, m_bulletPos.position, m_bulletPos.rotation);
         bullet.AddComponent<PlaugeProjectile>();
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         Bullet bulletScript = bullet.GetComponent<PlaugeProjectile>();
-
-
 
         Vector3 direction = m_bulletPos.transform.TransformDirection(Vector3.forward);
         bulletRb.AddForce(direction * m_speed);
@@ -29,6 +29,8 @@ public class Plague : Tool
         bulletScript.impactSound.clip = m_impactSound;
 
         bulletScript.travelSound.clip = m_travelSound;
+
+        bulletScript.travelSound.Play();
 
         Destroy(bullet, 5f);
     }

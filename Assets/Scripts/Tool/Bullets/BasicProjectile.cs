@@ -14,6 +14,8 @@ public class BasicProjectile : Bullet
     {
         base.OnCollisionEnter(collision);
 
+        impactSound.Play();
+
         Region region = RevolutionTrigger.GetRegionFromParent(collision.gameObject.transform);
         if (region != null)
         {
@@ -24,8 +26,12 @@ public class BasicProjectile : Bullet
                 region.StrikeSin();
                 //Destroy(collision.gameObject);
             }
+            else 
+            {
+                region.ReturnEvent().score -= region.ReturnEvent().missMatchScore;
+            }
         }
 
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, impactSound.clip.length);
     }
 }
