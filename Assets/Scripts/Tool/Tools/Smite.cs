@@ -20,9 +20,9 @@ public class Smite : Tool
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         Bullet bulletScript = bullet.GetComponent<BasicProjectile>();
 
-        bulletScript.impactSound = m_impactSound;
+        bulletScript.impactSound.clip = m_impactSound;
 
-        bulletScript.travelSound = m_travelSound;
+        bulletScript.travelSound.clip = m_travelSound;
 
         Vector3 direction = m_bulletPos.transform.TransformDirection(Vector3.forward);
         bulletRb.AddForce(direction * m_speed);

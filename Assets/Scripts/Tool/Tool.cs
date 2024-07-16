@@ -14,8 +14,8 @@ public class Tool : MonoBehaviour
     [SerializeField] protected Transform m_bulletPos;
     [SerializeField] protected float m_shootDelay;
 
-    [SerializeField] protected AudioSource m_impactSound;
-    [SerializeField] protected AudioSource m_travelSound;
+    [SerializeField] protected AudioClip m_impactSound;
+    [SerializeField] protected AudioClip m_travelSound;
 
     protected float m_lastShot;
 
